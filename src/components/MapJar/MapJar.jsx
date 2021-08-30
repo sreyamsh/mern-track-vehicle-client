@@ -18,7 +18,7 @@ const MapJar = () => {
       <MarkerClusterGroup>
         {vehiclesList.map((vehicle) => {
           return (
-            <Marker position={[vehicle.Status?.location?.lat ? vehicle.Status.location.lat : 20.429, vehicle.Status?.location?.lon ? vehicle.Status.location.lon : 77.76]}>
+            <Marker key={vehicle._id} position={[vehicle.Status?.location?.lat ? vehicle.Status.location.lat : 20.429, vehicle.Status?.location?.lon ? vehicle.Status.location.lon : 77.76]}>
               <Popup>
                 <p className="pop-up-text">Driver: {vehicle?.Driver}</p>
                 <p className="pop-up-text">VIN: {vehicle?.Vin}</p>

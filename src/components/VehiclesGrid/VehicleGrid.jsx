@@ -55,7 +55,7 @@ const VehicleGrid = (props) => {
                   value = vehicle.Status?.ignition;
                   break
                 default:
-                  value = vehicle[column.id];
+                  value = vehicle[column.id] ? vehicle[column.id] : '';
                   break
               }
               return <TableCell key={column.id}>{value}</TableCell>;

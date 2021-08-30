@@ -58,6 +58,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgba(0, 0, 0, 0.87)',
     backgroundColor: '#90caf9',
   },
+  buttonSubmit: {
+    marginLeft: 5,
+    marginRight: 5,
+  },
 }));
 
 const SearchBar = () => {
@@ -112,7 +116,7 @@ const SearchBar = () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Button variant="contained" color="primary" size="medium" onClick={searchQuery}>Search Query</Button>
+          <Button className={classes.buttonSubmit} variant="contained" color="primary" size="medium" onClick={searchQuery}>Search Query</Button>
         </Toolbar>
       </AppBar>
     </>

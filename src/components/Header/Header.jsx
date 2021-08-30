@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
 const Header = () => {
   return (
     <>
       <header>
-        <h1>Vehicle Tracker</h1>
+        <Typography variant="h2">Vehicle Tracker</Typography>
         <ul>
           <li>
             <Link to='/'>Dashboard</Link>
@@ -14,7 +15,6 @@ const Header = () => {
             <Link to='/vehicles'>Vehicles</Link>
           </li>
         </ul>
-
       </header>
     </>
   )

@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Dialog, DialogTitle, DialogContent } from '@material-ui/core';
+import { TextField, Button, Dialog, DialogTitle, DialogContent, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createVehicle, updateVehicle } from '../../actions/vehiclesActions';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+    },
+  },
+  paper: {
+    padding: theme.spacing(2),
+  },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  fileInput: {
+    width: '97%',
+    margin: '10px 0',
+  },
+  buttonSubmit: {
+    marginBottom: 10,
+    marginLeft: 5,
+    marginRight: 5,
+  },
+}));
 
 const Form = (props) => {
-  const classes = {};
+  const classes = useStyles();
   const dispatch = useDispatch();
   const { open, handleClose, currentId } = props;
   const vehicleToEdit = useSelector((state) => currentId ? state.vehicles.find((i) => i._id === currentId) : null);
@@ -65,7 +91,7 @@ const Form = (props) => {
     <Dialog className={classes.Dialog} open={open} onClose={clear}>
       <DialogTitle id="form-dialog-title">{ currentId ? 'Edit' : 'Add New' } Vehicle</DialogTitle>
       <DialogContent>
-        <form autoComplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
+        <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <TextField 
             name="Vin"
             variant="outlined"
@@ -114,7 +140,7 @@ const Form = (props) => {
             onChange={(e) => setVehicleData({ ...vehicleData, Office: e.target.value })}
             fullWidth
           />
-          <label>Status</label>
+          <Typography variant="h6">Status</Typography>
           <TextField 
             name="ignition"
             variant="outlined"
@@ -131,7 +157,7 @@ const Form = (props) => {
             onChange={(e) => setVehicleData({ ...vehicleData, Status: { ...vehicleData.Status, speed: e.target.value }})}
             fullWidth
           />
-          <label>Location</label>
+          <Typography variant="h6">Location</Typography>
           <TextField 
             name="lat"
             variant="outlined"
@@ -148,7 +174,7 @@ const Form = (props) => {
             onChange={(e) => setVehicleData({ ...vehicleData, Status: { ...vehicleData.Status, location: { ...vehicleData.Status.location, lon: e.target.value }}})}
             fullWidth
           />
-          <Button variant="contained" color="secondary" size="large" onClick={clear}>Cancel</Button>
+          <Button variant="contained" className={classes.buttonSubmit} color="secondary" size="large" onClick={clear}>Cancel</Button>
           <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit">Submit</Button>
         </form>
       </DialogContent>
