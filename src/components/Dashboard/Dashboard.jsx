@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 const Dashboard = () => {
   return (
     <>
-      <Typography variant="h4">Dashboard</Typography>
+      <Typography variant="h4" align="center">Dashboard</Typography>
       <MapJar />
     </>
   )
