@@ -1,7 +1,9 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../actions/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, QUERY } from '../actions/actionTypes';
 
 export default (state = [], action) => {
 	switch (action.type) {
+		case QUERY:
+			return action.payload;
 		case DELETE:
 			return state.filter((vehicle) => vehicle._id !== action.payload);
 		case UPDATE:
